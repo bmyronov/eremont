@@ -1,0 +1,380 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif !important;
+}
+
+.header-top {
+    width: auto;
+    height: 30px;
+    background-color: #00457E;
+}
+
+.header-content {
+    padding: 8px 0px;
+    line-height: 12px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.header-item {
+    display: flex;
+}
+
+.header-text {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    color: white;
+    margin-right: 10px;
+}
+
+.header-span {
+    color: #FFEF5A;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    margin-right: 10px;
+}
+
+.header-socials {
+    height: 30;
+    margin-left: 30px;
+}
+
+.header-socials a {
+    text-decoration: none;
+}
+
+.socials-icon {
+    margin: 0 10px;
+}
+
+.navbar {
+    background-color: #2F70AF;
+    /* height: 70px; */
+}
+
+.navbar-toggler:focus {
+    /*Below line will remove the border from the icon
+    I have used bootstrap icon here */
+    /* This will only remove the shadow effect */
+    /* Border is still there */
+    /* if you don't want any border then set the property equals to zero */
+    border: 0 !important;
+    box-shadow: none !important;
+
+    /* This will remove the rounded corner(radious-border)
+    and give square border */
+    /* border-radius: 0 !important; */
+}
+
+.navbar-toggler:focus {
+    /*Below line will remove the border from the icon
+    I have used bootstrap icon here */
+    /* This will only remove the shadow effect */
+    /* Border is still there */
+    /* if you don't want any border then set the property equals to zero */
+    border: 0 !important;
+    box-shadow: none !important;
+
+    /* This will remove the rounded corner(radious-border)
+    and give square border */
+    /* border-radius: 0 !important; */
+}
+
+.navbar-toggler {
+    /* This will completely remove border from the icon */
+    /* If you need border for the icon then comment this code */
+    border: 0 !important;
+
+    /* if you want to check the border please uncomment below code */
+    /* border-color: yellow !important; */
+}
+
+.dropdown:hover>.dropdown-menu {
+    display: block;
+}
+
+.dropdown>.dropdown-toggle:active {
+    pointer-events: none;
+}
+
+.navbar-nav>li>.dropdown-menu {
+    background-color: #4382c2;
+}
+
+.navbar-nav>li>.dropdown-menu a:active {
+    background-color: #00457E;
+}
+
+.navbar-nav>li>.dropdown-menu a:hover {
+    background-color: #00457E;
+}
+
+ul.phone_numbers {
+    background-color: #4382c2;
+}
+
+a.phone_number {
+    color: #FFEF5A;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    text-decoration: none;
+}
+
+a.phone_number:hover {
+    color: #FFEF5A;
+    background-color: #00457E;
+}
+
+.navbar-nav>li>.dropdown-menu a:hover {
+    background-color: #00457E;
+}
+
+.nav-items {
+    width: 515px;
+    font-weight: 600;
+}
+
+.nav-search {
+    max-width: 221px;
+}
+
+.form-search {
+    width: 220px;
+    background-color: #ECECEC;
+}
+
+input.form-search {
+    padding: 5px 0 5px 15px;
+    color: #616161;
+    border: 0;
+    outline: none;
+    box-shadow: none;
+}
+
+.banner {
+    background-image: url("../images/banner.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 700px;
+}
+
+.banner-form {
+    background-color: #02315D;
+    width: 450px;
+    height: 480px;
+}
+
+.form-label {
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.form-input {
+    width: 390px;
+    height: 60px;
+    background-color: #ECECEC;
+}
+
+input.form-input {
+    padding: 20px 0 20px 15px;
+    color: #616161;
+    border: 0;
+    outline: none;
+    box-shadow: none;
+}
+
+.errorlist {
+    margin-bottom: 0;
+    font-size: 14px;
+}
+
+.errorlist li {
+    text-align: start;
+}
+
+.btn-submit {
+    width: 390px;
+    height: 60px;
+}
+
+button.btn-submit {
+    font-size: 24px;
+    font-weight: 600;
+    background-color: #806491;
+}
+
+button.btn-submit:hover {
+    background-color: #77538f;
+}
+
+/* Toast notification */
+#toast {
+    -webkit-animation: cssAnimation 9s forwards; 
+    animation: cssAnimation 9s forwards;
+}
+@keyframes cssAnimation {
+    0%   {opacity: 1;}
+    90%  {opacity: 1;}
+    100% {opacity: 0;}
+}
+@-webkit-keyframes cssAnimation {
+    0%   {opacity: 1;}
+    90%  {opacity: 1;}
+    100% {opacity: 0;}
+}
+
+/* .toast-header {
+    background-color: rgba(94, 235, 118, 0.9);
+}
+
+.toast-body {
+    background-color: rgba(94, 235, 118, 0.7);
+} */
+
+.toast-circle {
+    height: 10px;
+    width: 10px;
+    background-color: #5bc0de;
+    display: inline-block;
+}
+
+.small-card {
+    min-width: 330px;
+    height: 165px;
+    background-color: #FAFAFA;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+    border-radius: 5px;
+    text-decoration: none;
+    color: #000;
+}
+
+.small-card:hover {
+    background-color: rgba(255, 239, 90, 0.5);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+    border-radius: 5px;
+    color: #000;
+}
+
+.card-title {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+}
+
+.card-description {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+}
+
+.delivery {
+    height: 500px;
+    margin-top: 80px;
+    background-color: #02315D;
+}
+
+.delivery-title {
+    font-weight: 600;
+    font-size: 26px;
+    line-height: 31px;
+}
+
+.delivery-description {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+}
+
+.btn-delivery {
+    width: 296px;
+    height: 60px;
+}
+
+button.btn-delivery {
+    font-size: 24px;
+    font-weight: 600;
+    background-color: #806491;
+}
+
+button.btn-delivery:hover {
+    background-color: #77538f;
+}
+
+.delivery-tg {
+    width: 60px;
+    height: 60px;
+    margin-left: 20px;
+    background-color: #2F70AF;
+}
+
+.delivery-tg:hover {
+    background-color: #1361af;
+}
+
+.service-card {
+    min-width: 280px;
+    height: 330px;
+    background: #FAFAFA;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.15);
+    text-decoration: none;
+    color: #000;
+}
+
+.service-card:hover {
+    background-color: rgba(255, 239, 90, 0.5);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+    border-radius: 5px;
+    color: #000;
+}
+
+.service-title {
+    margin-bottom: 34px;
+    font-size: 20px;
+}
+
+.map {
+    margin-top: 80px;
+}
+
+iframe.location {
+    width: 100%;
+    height: 440px;
+}
+
+footer {
+    background: #00457E;
+    height: 170px;
+}
+
+.footer-title {
+    color: #F0F0F0;
+    font-size: 14px;
+    margin-bottom: 12px;
+}
+
+.footer-text {
+    color: #F0F0F0;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.footer-span {
+    color: #FFEF5A;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    text-decoration: none;
+}
+
+a.footer-span:hover {
+    color: #FFEF5A;
+}

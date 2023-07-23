@@ -1,0 +1,312 @@
+{% extends "repairshop/base.html" %}
+
+{% block content %}
+{% load static %}
+<main>
+    <!-- Banner Section -->
+    <section class="banner d-flex align-items-center">
+        <div class="container d-flex justify-content-between align-items-center">
+            <div>
+                <p class="text-light fw-bold h1">{{ content.banner_title|safe }}</p>
+            </div>
+            <div class="banner-form rounded d-flex justify-content-center align-items-center">
+                <!-- <form id="form">
+                    <legend class="text-light text-center fw-bold mb-4 form-label">Заповніть форму</legend>
+                    <div class="mb-4">
+                        <input type="text" class="mt-2 form-input rounded" id="name" placeholder="Ваше ім'я" oninvalid="this.setCustomValidity('Введіть, буль ласка, своє ім\'я')" oninput="setCustomValidity('')" required>
+                    </div>
+                    <div class="mb-4">
+                        <input type="text" class="form-input rounded" id="phoneNumber" placeholder="Номер телефону" oninvalid="this.setCustomValidity('Введіть, буль ласка, свій номер телефону')" oninput="setCustomValidity('')" required>
+                    </div>
+                    <div class="mb-4">
+                        <input type="email" class="form-input rounded" id="email" placeholder="Email">
+                    </div>
+                    <button type="submit" class="btn btn-submit mt-3 fw-bold text-light">Замовити ремонт</button>
+                </form> -->
+                <form id="form" class="d-flex flex-column align-items-center" action="{% url 'home' %}" method="POST">
+                    {% csrf_token %}
+
+                    <legend class="text-light text-center fw-bold mb-4 form-label">Заповніть форму</legend>
+
+                    {% for item in form %}
+                        <div class="mb-4 d-flex flex-column">
+                            {{ item }}
+                            <small class="form-error text-danger">{{ item.errors }}</small>
+                        </div>
+                    {% endfor %}
+                    
+                    <button type="submit" class="btn btn-submit mt-3 fw-bold text-light">Замовити ремонт</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Popup Notification -->
+        {% if messages %}
+            {% for message in messages %}
+                <div class="toast-container position-fixed bottom-0 end-0 p-3">
+                    <div id="toast" class="toast show">
+                        <div class="toast-header">
+                            <div class="toast-circle rounded-circle me-2" alt="..."></div>
+                            <strong class="ms-1 me-auto">e-remont</strong>
+                            <small>щойно</small>
+                            <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+                        </div>
+                        <div class="toast-body">
+                            {{ message|safe }}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+
+    </section>
+
+    <!-- Why We Section -->
+    <section class="mt-5">
+        <div class="container">
+            <h3 class="fw-bold text-center mb-3">Чому ми?</h3>
+            <div class="row text-center d-flex justify-content-between">
+                <div class="col-lg-3 d-flex justify-content-center">
+                    <a href="{{ content.card_one_link }}" class=" small-card rounded d-flex justify-content-evenly align-items-center mt-4">
+                        <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="120px" height="120px" viewBox="0 0 120.000000 120.000000" preserveAspectRatio="xMidYMid meet">
+
+                            <g transform="translate(0.000000,120.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
+                                <path d="M422 1087 c-6 -7 -12 -32 -14 -56 -3 -42 -4 -43 -60 -66 l-56 -23
+-28 29 c-15 16 -37 29 -49 29 -26 0 -115 -89 -115 -115 0 -10 14 -33 30 -50
+l30 -31 -20 -42 c-11 -22 -20 -46 -20 -52 0 -5 -17 -10 -38 -10 -21 0 -48 -7
+-60 -16 -19 -13 -22 -24 -22 -84 0 -82 13 -100 73 -100 41 0 42 -1 63 -54 l20
+-53 -28 -32 c-15 -17 -28 -40 -28 -50 0 -23 94 -121 115 -121 8 0 30 14 50 31
+l35 31 55 -23 c53 -22 55 -24 55 -60 0 -55 8 -69 41 -69 33 0 39 19 9 27 -16
+4 -20 14 -20 52 0 47 -13 71 -37 71 -8 0 -33 9 -55 20 -54 26 -59 26 -93 -10
+-16 -16 -33 -30 -38 -30 -5 0 -26 19 -48 41 l-40 42 36 37 36 36 -26 60 c-40
+90 -38 89 -89 94 -25 3 -46 8 -46 13 0 4 0 29 0 56 l0 50 52 3 51 3 17 51 c10
+28 24 60 31 72 12 20 10 25 -24 60 l-37 38 43 41 42 42 38 -35 37 -34 38 18
+c20 11 54 25 74 31 36 12 37 14 40 64 l3 52 60 0 60 0 5 -54 c5 -53 6 -54 45
+-67 22 -8 53 -21 68 -30 28 -16 29 -16 68 22 l39 38 40 -39 c22 -21 40 -44 40
+-50 0 -20 -44 -53 -75 -57 -26 -3 -30 -7 -33 -38 -2 -19 -7 -38 -11 -43 -4 -4
+-30 15 -57 41 -48 47 -135 89 -155 76 -21 -13 -6 -31 34 -41 24 -7 63 -29 88
+-51 46 -42 49 -69 3 -33 -15 11 -35 21 -44 21 -17 0 -90 -72 -90 -89 0 -4 9
+-20 20 -34 23 -29 24 -37 8 -72 -8 -18 -19 -25 -39 -25 -39 0 -59 -24 -59 -71
+0 -59 14 -79 56 -79 24 0 34 -4 31 -12 -3 -9 -23 -12 -61 -11 -169 6 -268 184
+-190 342 28 55 73 93 141 116 46 16 52 41 9 37 -70 -8 -153 -74 -190 -152 -29
+-62 -28 -169 2 -226 53 -103 134 -154 246 -154 72 0 85 -8 56 -35 -24 -21 -26
+-58 -5 -75 8 -7 15 -28 15 -47 0 -26 -5 -36 -20 -40 -28 -7 -25 -33 3 -33 29
+0 47 18 47 47 0 15 5 21 14 17 7 -3 26 6 42 19 26 23 29 23 65 9 33 -13 38
+-19 41 -51 l3 -36 58 -3 c67 -3 87 8 87 47 0 21 8 31 34 44 31 14 36 14 47 1
+32 -39 49 -38 95 7 24 24 44 48 44 55 0 6 -9 23 -20 37 -19 24 -20 28 -6 62
+12 28 20 35 43 35 41 0 53 17 53 77 0 56 -14 73 -62 73 -18 0 -27 8 -37 36
+-12 32 -11 38 8 58 29 31 26 47 -17 89 -44 43 -57 45 -88 16 -20 -19 -26 -20
+-58 -8 -31 11 -36 17 -36 45 0 17 -7 37 -15 44 -13 11 -13 15 0 33 23 32 19
+44 -31 97 -56 60 -86 65 -129 21 l-28 -30 -38 20 c-21 10 -45 19 -54 19 -11 0
+-15 11 -15 48 0 26 -5 53 -12 60 -17 17 -152 16 -166 -1z m450 -324 c3 -34 8
+-40 48 -60 57 -28 68 -28 97 -1 l24 22 26 -27 27 -26 -22 -24 c-27 -29 -27
+-40 1 -97 19 -38 27 -45 55 -48 30 -3 32 -6 32 -42 0 -37 -1 -39 -36 -42 -34
+-3 -38 -7 -56 -56 l-20 -54 23 -24 23 -24 -29 -30 -29 -30 -26 25 -27 25 -56
+-25 c-54 -23 -57 -27 -57 -60 0 -34 -1 -35 -40 -35 -39 0 -40 1 -40 35 0 33
+-3 37 -57 60 l-56 25 -27 -25 -26 -25 -26 27 -27 28 24 27 23 27 -22 55 c-20
+54 -22 56 -58 56 -37 0 -38 1 -38 39 0 38 1 40 36 43 33 3 37 7 58 60 l23 56
+-25 26 -26 25 24 26 c29 30 37 31 66 4 l23 -21 55 23 c51 21 56 25 56 54 0 40
+5 45 46 45 31 0 33 -2 36 -37z" />
+                                <path d="M738 640 c-62 -33 -108 -112 -108 -184 1 -108 124 -211 229 -191 121
+23 190 126 167 250 -8 43 -68 113 -113 132 -47 19 -131 16 -175 -7z m82 -20
+c8 -5 19 -5 25 0 13 11 55 2 55 -11 0 -5 11 -14 25 -19 14 -5 30 -21 35 -35 5
+-14 14 -25 19 -25 14 0 19 -48 7 -60 -8 -8 -8 -13 1 -18 15 -10 6 -49 -13 -56
+-8 -3 -14 -14 -14 -24 0 -23 -19 -42 -41 -42 -10 0 -19 -5 -21 -12 -5 -15
+-109 -20 -127 -5 -7 6 -23 16 -34 22 -12 6 -26 20 -32 32 -6 11 -16 27 -21 34
+-17 21 -15 119 2 126 8 3 14 13 14 22 0 20 19 41 37 41 7 0 22 9 33 20 22 22
+29 24 50 10z" />
+                                <path d="M817 593 c-4 -3 -7 -26 -7 -50 0 -23 -4 -43 -9 -43 -13 0 -23 -34
+-15 -54 3 -9 15 -21 26 -27 16 -9 26 -7 49 10 15 12 40 21 54 21 16 0 25 6 25
+15 0 10 -10 15 -28 15 -40 0 -62 28 -62 78 0 40 -14 55 -33 35z m25 -128 c0
+-5 -5 -11 -11 -13 -6 -2 -11 4 -11 13 0 9 5 15 11 13 6 -2 11 -8 11 -13z" />
+                            </g>
+                        </svg>
+                        <div class="d-flex flex-column">
+                            <p class="card-title">{{ content.card_one_title }}</p>
+                            <p class="card-description">{{ content.card_one_description }}</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-3 d-flex justify-content-center">
+                    <a href="{{ content.card_two_link }}" class="small-card rounded d-flex justify-content-evenly align-items-center mt-4">
+                        <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="120px" height="120px" viewBox="0 0 120.000000 120.000000" preserveAspectRatio="xMidYMid meet">
+
+                            <g transform="translate(0.000000,120.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
+                                <path d="M797 1194 c-4 -4 -7 -38 -7 -76 0 -62 2 -68 20 -68 19 0 21 5 18 72
+-3 65 -13 89 -31 72z" />
+                                <path d="M590 1081 c0 -19 71 -91 90 -91 28 0 20 34 -16 71 -41 42 -74 51 -74
+20z" />
+                                <path d="M956 1061 c-38 -39 -44 -71 -13 -71 19 0 87 73 87 93 0 29 -34 19
+-74 -22z" />
+                                <path d="M751 924 c-24 -20 -31 -34 -31 -62 0 -125 -101 -224 -282 -279 -45
+-13 -50 -12 -76 7 -25 19 -39 20 -162 18 l-135 -3 0 -300 0 -300 135 -3 c122
+-2 137 -1 162 18 27 20 30 20 86 4 61 -18 411 -32 478 -20 46 9 77 56 70 106
+-4 28 0 40 20 61 21 21 25 34 22 70 -3 36 1 47 26 71 24 24 27 35 24 71 -4 34
+0 46 18 64 31 28 39 66 24 104 -19 46 -55 59 -163 59 l-94 0 13 48 c20 81 27
+174 15 220 -20 71 -94 94 -150 46z m100 -46 c14 -26 6 -151 -14 -218 -13 -44
+-13 -45 -62 -50 -42 -4 -50 -8 -50 -25 0 -19 8 -20 169 -23 177 -3 196 -7 196
+-47 0 -35 -19 -44 -100 -47 -67 -3 -75 -5 -75 -23 0 -17 8 -20 50 -23 57 -4
+75 -15 75 -47 0 -35 -19 -44 -100 -47 -67 -3 -75 -5 -75 -23 0 -17 8 -21 58
+-25 71 -7 95 -33 65 -73 -10 -12 -32 -17 -93 -19 -72 -3 -80 -5 -80 -23 0 -17
+8 -20 55 -23 61 -4 80 -14 80 -46 0 -43 -13 -46 -219 -45 -147 0 -214 5 -266
+17 l-70 17 -3 217 -2 216 67 22 c190 63 303 166 303 278 0 59 14 82 50 82 20
+0 33 -7 41 -22z m-511 -573 l0 -255 -115 0 -115 0 0 255 0 255 115 0 115 0 0
+-255z" />
+                                <path d="M253 454 c-8 -21 13 -42 28 -27 13 13 5 43 -11 43 -6 0 -13 -7 -17
+-16z" />
+                                <path d="M250 260 c0 -91 3 -112 15 -117 25 -9 30 4 34 93 4 104 -3 134 -29
+134 -19 0 -20 -7 -20 -110z" />
+                                <path d="M523 903 c-7 -2 -13 -13 -13 -24 0 -17 8 -19 64 -19 69 0 92 14 61
+37 -18 13 -87 17 -112 6z" />
+                                <path d="M993 903 c-7 -2 -13 -13 -13 -24 0 -17 8 -19 65 -19 57 0 65 2 65 19
+0 10 -7 22 -16 25 -18 7 -83 7 -101 -1z" />
+                            </g>
+                        </svg>
+                        <div class="d-flex flex-column">
+                            <p class="card-title">{{ content.card_two_title }}</p>
+                            <p class="card-description">{{ content.card_two_description }}</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-3 d-flex justify-content-center">
+                    <a href="{{ content.card_three_link }}" class="small-card rounded d-flex justify-content-evenly align-items-center mt-4">
+                        <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="120px" height="120px" viewBox="0 0 120.000000 120.000000" preserveAspectRatio="xMidYMid meet">
+
+                            <g transform="translate(0.000000,120.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
+                                <path d="M690 1189 c-53 -22 -102 -91 -80 -113 9 -8 15 -6 24 9 31 53 63 75
+111 75 38 0 52 -5 76 -29 56 -57 32 -155 -45 -181 -46 -15 -80 -4 -116 36 -33
+38 -50 43 -50 16 0 -19 41 -62 77 -81 34 -17 95 -13 131 9 120 74 79 254 -61
+266 -23 2 -53 -1 -67 -7z" />
+                                <path d="M692 1110 c-29 -27 -29 -83 -2 -110 12 -12 33 -20 55 -20 45 0 75 29
+75 73 0 66 -80 101 -128 57z m82 -29 c23 -25 13 -59 -20 -67 -46 -12 -72 37
+-38 70 21 21 37 20 58 -3z" />
+                                <path d="M510 1035 c0 -8 7 -15 15 -15 8 0 15 7 15 15 0 8 -7 15 -15 15 -8 0
+-15 -7 -15 -15z" />
+                                <path d="M222 967 c-38 -40 -27 -102 21 -122 36 -15 82 -3 97 25 43 80 -57
+162 -118 97z m82 -23 c9 -8 16 -22 16 -29 0 -18 -27 -45 -45 -45 -18 0 -45 27
+-45 45 0 18 27 45 45 45 7 0 21 -7 29 -16z" />
+                                <path d="M435 980 c-7 -12 2 -30 16 -30 5 0 9 9 9 20 0 21 -15 27 -25 10z" />
+                                <path d="M508 943 c-2 -28 -8 -39 -22 -41 -10 -2 -22 2 -26 8 -9 15 -30 4 -30
+-15 0 -8 -11 -35 -25 -61 -14 -26 -25 -58 -25 -70 0 -13 -5 -24 -11 -24 -6 0
+-33 -10 -60 -21 -34 -15 -49 -27 -49 -40 0 -24 -3 -24 65 7 l58 27 18 -24 c15
+-20 16 -25 4 -27 -8 -2 -15 -10 -15 -18 0 -11 25 -14 135 -14 113 0 135 2 135
+15 0 8 -5 15 -10 15 -6 0 -4 13 5 30 8 16 15 40 15 53 0 27 28 60 70 82 l30
+16 0 -71 c0 -65 2 -71 28 -87 42 -26 102 -85 120 -118 8 -16 21 -52 27 -80 11
+-49 12 -50 53 -53 l42 -3 0 -85 0 -84 -58 0 c-56 0 -60 -2 -83 -34 -29 -40
+-91 -92 -122 -102 -28 -9 -37 -22 -37 -56 0 -27 -2 -28 -54 -28 -52 0 -55 1
+-58 27 -2 23 -8 28 -32 28 -34 0 -46 -20 -16 -28 11 -3 20 -10 20 -16 0 -7
+-27 -11 -75 -11 -60 0 -75 3 -75 15 0 10 10 15 30 15 20 0 30 5 30 15 0 11
+-12 15 -44 15 -40 0 -44 -2 -49 -30 -6 -29 -8 -30 -62 -30 l-55 0 0 49 c0 45
+-3 52 -39 81 -24 18 -52 56 -70 92 -27 54 -31 71 -31 147 0 88 19 151 57 194
+12 13 14 20 5 29 -16 16 -37 -4 -69 -71 -25 -49 -28 -67 -28 -151 0 -82 4
+-103 27 -152 15 -32 47 -77 72 -102 38 -36 46 -51 46 -80 l0 -36 -62 0 c-66 0
+-95 -10 -84 -29 10 -16 942 -16 952 0 13 22 -23 29 -158 29 l-138 0 0 25 c0
+15 7 28 18 32 32 12 107 72 127 102 18 28 25 31 75 31 31 0 61 5 68 12 16 16
+16 200 0 216 -7 7 -29 12 -50 12 -31 0 -38 4 -38 19 0 57 -100 200 -151 216
+-16 6 -19 16 -19 79 0 105 -21 117 -106 60 l-38 -26 -18 24 c-9 12 -18 35 -18
+50 0 34 -19 46 -36 24 -21 -30 -54 -12 -54 30 0 49 -28 46 -32 -3z m91 -99
+c36 -30 49 -81 31 -125 -18 -42 -47 -59 -103 -59 -40 0 -53 5 -78 29 -43 43
+-41 101 5 147 44 44 99 47 145 8z" />
+                                <path d="M475 815 c-42 -41 -30 -102 23 -124 54 -23 122 29 108 84 -16 62 -87
+85 -131 40z m91 -41 c12 -46 -37 -72 -70 -38 -21 20 -20 30 3 53 25 25 59 17
+67 -15z" />
+                                <path d="M911 884 c-44 -56 -10 -124 61 -124 45 0 72 29 72 77 0 69 -90 101
+-133 47z m80 -14 c37 -20 15 -87 -27 -78 -9 2 -23 12 -30 23 -12 18 -11 24 2
+43 17 25 27 27 55 12z" />
+                                <path d="M854 486 c-9 -25 1 -109 14 -114 9 -3 12 14 12 62 0 61 -13 87 -26
+52z" />
+                            </g>
+                        </svg>
+                        <div class="d-flex flex-column">
+                            <p class="card-title">{{ content.card_three_title }}</p>
+                            <p class="card-description">{{ content.card_three_description }}</p>
+                        </div>
+                    </a>
+                </div>
+            </div><!-- /.row -->
+        </div>
+    </section>
+
+    <!-- Delivery Section -->
+    <section class="delivery d-flex align-items-center">
+        <div class="container d-flex justify-content-between align-items-center">
+            <div class="d-flex flex-column">
+                <p class="text-light delivery-title">{{ content.delivery_title|safe }}</p>
+                <p class="text-light delivery-description mt-3">{{ content.delivery_description }}<p>
+                <div class="d-flex">
+                    <button type="submit" class="btn btn-delivery mt-3 fw-bold text-light" onclick="window.location.href='#form'">Залишити заявку</button>
+                    <div class="delivery-tg rounded mt-3 text-center d-flex align-items-center justify-content-center">
+                        <a href="#">
+                            <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="40" height="40px" viewBox="0 0 40 40" preserveAspectRatio="xMidYMid meet">
+
+                                <g transform="translate(0.000000,40.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
+                                    <path d="M180 300 c-192 -75 -212 -91 -136 -112 44 -11 47 -15 69 -72 30 -79
+               47 -89 86 -52 l30 29 36 -32 c36 -31 59 -39 69 -22 12 19 68 302 62 316 -8 23
+               -28 18 -216 -55z m174 -77 c-32 -158 -33 -163 -43 -163 -11 0 -111 80 -111 88
+               0 4 27 37 60 73 32 37 57 69 53 72 -3 3 -50 -17 -106 -44 -83 -42 -106 -50
+               -135 -44 -19 3 -31 9 -28 12 10 10 299 121 317 122 15 1 14 -12 -7 -116z
+               m-153 -29 c-22 -25 -43 -60 -47 -77 l-7 -32 -13 35 c-19 54 -18 58 44 89 31
+               17 59 30 60 31 2 0 -14 -21 -37 -46z m3 -83 c3 -4 -3 -16 -14 -26 -20 -18 -25
+               -11 -14 19 7 18 20 21 28 7z" />
+                                </g>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <img src="{% static 'repairshop/images/delivery-img.jpg' %}" alt="Відновлення рами">
+        </div>
+    </section>
+    <section class="mt-5">
+        <div class="container">
+            <h3 class="fw-bold text-center mb-3">Послуги</h3>
+            <div class="row text-center d-flex justify-content-evenly">
+                {% for sub_category in sub_categories %}
+                    {% if sub_category.blank == False %}
+                        <div class="col-lg-3 d-flex justify-content-center">
+                            <a href="{{ sub_category.get_absolute_url }}" class="service-card rounded d-flex justify-content-evenly align-items-end mt-4">
+                                <div class="d-flex flex-column justify-content-between align-items-center">
+                                    <img class="mb-3" src="{{ sub_category.image.url }}" width="205px" height="190px" alt="{{ sub_category.name }}">
+                                    <p class="service-title">{{ sub_category.name.split|join:'<br>' }}</p>
+                                </div>
+                            </a>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+
+                <!-- <div class="col-lg-3 d-flex justify-content-center">
+                    <a href="#" class="service-card rounded d-flex justify-content-evenly align-items-end mt-4">
+                        <div class="d-flex flex-column">
+                            <p class="service-title">Ремонт
+                                <br> елктросамокатів
+                            </p>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-3 d-flex justify-content-center">
+                    <a href="#" class="service-card rounded d-flex justify-content-evenly align-items-end mt-4">
+                        <div class="d-flex flex-column">
+                            <p class="service-title">Ремонт
+                                <br> електровелосипедів
+                            </p>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-3 d-flex justify-content-center">
+                    <a href="#" class="service-card rounded d-flex justify-content-evenly align-items-end mt-4">
+                        <div class="d-flex flex-column">
+                            <p class="service-title">Ремонт
+                                <br> велосипедів
+                            </p>
+                        </div>
+                    </a>
+                </div> -->
+            </div>
+        </div>
+    </section>
+    <section class="map">
+        {{ content.location|safe }}
+    </section>
+
+</main>
+{% endblock %}
