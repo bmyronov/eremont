@@ -14,3 +14,8 @@ class OrderItem(models.Model):
     service = models.ForeignKey(
         Service, on_delete=models.CASCADE, verbose_name="Послуга"
     )
+
+    class Meta:
+        verbose_name = "Позиція для замовлення"
+        verbose_name_plural = "Позиції для замовлення"
+        ordering = ["-order", "service"]

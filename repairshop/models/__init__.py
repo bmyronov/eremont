@@ -4,6 +4,7 @@ from .discount_global import DiscountGlobal
 from .discount_personal import DiscountPersonal
 from .home_content import HomeContent
 from .order import Order
+from .order_item import OrderItem
 from .order_status import OrderStatus
 from .order_status_history import OrderStatusHistory
 from .service import Service

@@ -11,3 +11,8 @@ class Customer(models.Model):
 
     def __str__(self) -> str:
         return self.name
+
+    class Meta:
+        verbose_name = "Клієнт"
+        verbose_name_plural = "Клієнти"
+        ordering = ["-id"]

@@ -1,6 +1,8 @@
 from . import (
+    contact_information,
     discount_global,
     discount_personal,
+    home_content,
     order,
     order_status,
     order_status_history,

@@ -19,6 +19,7 @@ class DiscountPersonal(models.Model):
         on_delete=models.SET_NULL,
         verbose_name="Послуга",
     )
+    is_active = models.BooleanField(default=True, verbose_name="Активний")
 
     def __str__(self):
         return self.name
@@ -26,4 +27,4 @@ class DiscountPersonal(models.Model):
     class Meta:
         verbose_name = "Персональна знижка"
         verbose_name_plural = "Персональні знижки"
-        ordering = ["customer", "service"]
+        ordering = ["customer", "is_active", "service"]
