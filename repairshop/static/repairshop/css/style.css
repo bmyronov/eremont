@@ -378,3 +378,14 @@ footer {
 a.footer-span:hover {
     color: #FFEF5A;
 }
+
+/* Breadcrumb */
+
+.breadcrumb-item {
+    font-size: 14px;
+}
+
+.breadcrumb-item a {
+    color: #2F70AF;
+    text-decoration: none;
+}

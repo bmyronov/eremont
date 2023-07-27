@@ -40,6 +40,7 @@ def home(request: HttpRequest) -> HttpResponse:
     content = HomeContent.objects.get(pk=1)
     sub_categories = SubCategory.objects.all()
     context = {
+        "title": content.title,
         "content": content,
         "form": form,
         "sub_categories": sub_categories,

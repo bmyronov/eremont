@@ -1,4 +1,7 @@
+from typing import Any, List
+
 from django.contrib import admin
+from django.core.handlers.wsgi import WSGIRequest
 
 from repairshop.models import Vehicle
 

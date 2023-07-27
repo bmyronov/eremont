@@ -5,10 +5,11 @@ from django.db import models
 class DiscountGlobal(models.Model):
     name = models.CharField(max_length=255, verbose_name="Назва")
     percentage = models.IntegerField(verbose_name="Відсоток")
+    final_date = models.DateField(null=True, blank=True, verbose_name="Кінцева дата")
     active = models.BooleanField(default=False, verbose_name="Ввімкнено")
 
     def __str__(self):
-        return self.name
+        return f"{self.name}: {self.percentage}%"
 
     class Meta:
         constraints = [

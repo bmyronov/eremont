@@ -1,6 +1,39 @@
 {% extends "repairshop/base.html" %}
+{% load static %}
+{% load custom_tags %}
 
 {% block content %}
-{% load static %}
-<h1>{{ sub_category.name }}</h1>
+<div class="container">
+    <!-- Breadcrumb nav menu -->
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb mt-3">
+        <li class="breadcrumb-item"><a href="{% url 'home' %}">Головна</a></li>
+        <li class="breadcrumb-item"><a href="{% url 'categories' %}">Послуги</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{ sub_category.name }}</li>
+        </ol>
+    </nav>
+
+    <h1>{{ sub_category.name }}</h1>
+    <table class="table table-hover table-bordered">
+        <thead>
+          <tr>
+            <th scope="col" class="col-6">Послуга</th>
+            <th scope="col" class="col-2">Ціна</th>
+            {% if discount %}
+                <th scope="col" class="col-2">Знижка <span class="text-danger"><sup>{{ discount.percentage }}%</sup></span></th>
+            {% endif %}
+          </tr>
+        </thead>
+        <tbody class="table-group-divider">
+            {% for service in services %}
+                <tr>
+                    <td scope="row">{{ service.name }}</td>
+                    <td>{{ service.price }}</td>
+                    {% if discount %}
+                        <td>{{ service.price|discount_price:discount.percentage }}</td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+    </table>
+</div>
 {% endblock %}
