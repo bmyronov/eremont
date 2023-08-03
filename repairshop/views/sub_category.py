@@ -11,6 +11,7 @@ def sub_category(request: HttpRequest, sub_category: str) -> HttpResponse:
     discount = DiscountGlobal.objects.filter(active=True).first()
 
     context = {
+        "title": sub_category.name,
         "sub_category": sub_category,
         "services": services,
         "discount": discount,

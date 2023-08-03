@@ -2,7 +2,13 @@ from typing import Any
 
 from django.contrib import admin
 
-from repairshop.models import DiscountPersonal, Order, OrderItem, OrderStatusHistory
+from repairshop.models import (
+    AdditionExpense,
+    DiscountPersonal,
+    Order,
+    OrderItem,
+    OrderStatusHistory,
+)
 
 
 # OrderItem inline
@@ -10,6 +16,12 @@ class OrderItemInline(admin.StackedInline):
     model = OrderItem
     fields = ["service", "quantity"]
     extra = 1
+
+
+class AdditionalExpenseInline(admin.StackedInline):
+    model = AdditionExpense
+    fields = ["name", "price"]
+    extra = 0
 
 
 # Class to control how to display Order on admin page
@@ -20,7 +32,7 @@ class OrderAdmin(admin.ModelAdmin):
     list_filter = ["order_status", "date"]
     search_fields = ["customer__name", "order_status__name"]
 
-    inlines = [OrderItemInline]
+    inlines = [OrderItemInline, AdditionalExpenseInline]
 
     # Auto generates new record in OrderStatusHistory when "order_status" has been changed
     def save_model(self, request, obj, form, change):

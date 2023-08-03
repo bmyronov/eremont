@@ -1,3 +1,4 @@
+from .additional_expenses import AdditionExpense
 from .contact_information import ContactInformation
 from .customer import Customer
 from .discount_global import DiscountGlobal

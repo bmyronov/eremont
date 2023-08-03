@@ -389,3 +389,15 @@ a.footer-span:hover {
     color: #2F70AF;
     text-decoration: none;
 }
+
+/* Sub categories title */
+.sub-title {
+    color: #2F70AF;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.sub-remark {
+    color: #727171;
+    font-size: 12px;
+}
