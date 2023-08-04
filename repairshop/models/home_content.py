@@ -22,13 +22,6 @@ class HomeContent(models.Model):
         max_length=255, verbose_name="Опис картки 3"
     )
     card_three_link = models.CharField(max_length=50, verbose_name="Посилання картки 3")
-    delivery_title = models.CharField(
-        max_length=255, verbose_name="Заголовок в блоці ДОСТАВКА"
-    )
-    delivery_description = models.CharField(
-        max_length=255, verbose_name="Текст в блоці ДОСТАВКА"
-    )
-    location = models.TextField(verbose_name="Посилання на локацію в google maps")
 
     def __str__(self):
         return self.title

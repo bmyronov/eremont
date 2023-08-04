@@ -9,7 +9,6 @@ from repairshop.models import (
     Order,
     OrderStatus,
     OrderStatusHistory,
-    SubCategory,
 )
 
 
@@ -24,9 +23,9 @@ def home(request: HttpRequest) -> HttpResponse:
 
             order_status = OrderStatus.objects.get(name="Нове замовлення")
             order = Order.objects.create(customer=customer, order_status=order_status)
-            order_status_history = OrderStatusHistory.objects.create(
-                order=order, order_status=order_status
-            )
+
+            # Creates new data in OrderStatusHistory table
+            OrderStatusHistory.objects.create(order=order, order_status=order_status)
 
             messages.success(
                 request,
@@ -37,10 +36,10 @@ def home(request: HttpRequest) -> HttpResponse:
     else:
         form = CustomerForm()
 
-    content = HomeContent.objects.get(pk=1)
+    home_content = HomeContent.objects.get(pk=1)
     context = {
-        "title": content.title,
-        "content": content,
+        "title": home_content.title,
+        "home_content": home_content,
         "form": form,
     }
     return render(request, "repairshop/home.html", context=context)

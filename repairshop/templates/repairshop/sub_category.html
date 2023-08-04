@@ -39,4 +39,34 @@
             {% endfor %}
     </table>
 </div>
+<!-- Delivery Section -->
+<section class="delivery d-flex align-items-center">
+    <div class="container d-flex justify-content-between align-items-center">
+        <div class="d-flex flex-column">
+            <p class="text-light delivery-title">{{ content.delivery_title|safe }}</p>
+            <p class="text-light delivery-description mt-3">{{ content.delivery_description }}<p>
+            <div class="d-flex">
+                <button type="submit" class="btn btn-delivery mt-3 fw-bold text-light" onclick="window.location.href='#form'">Залишити заявку</button>
+                <div class="delivery-tg rounded mt-3 text-center d-flex align-items-center justify-content-center">
+                    <a href="#">
+                        <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="40" height="40px" viewBox="0 0 40 40" preserveAspectRatio="xMidYMid meet">
+
+                            <g transform="translate(0.000000,40.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
+                                <path d="M180 300 c-192 -75 -212 -91 -136 -112 44 -11 47 -15 69 -72 30 -79
+           47 -89 86 -52 l30 29 36 -32 c36 -31 59 -39 69 -22 12 19 68 302 62 316 -8 23
+           -28 18 -216 -55z m174 -77 c-32 -158 -33 -163 -43 -163 -11 0 -111 80 -111 88
+           0 4 27 37 60 73 32 37 57 69 53 72 -3 3 -50 -17 -106 -44 -83 -42 -106 -50
+           -135 -44 -19 3 -31 9 -28 12 10 10 299 121 317 122 15 1 14 -12 -7 -116z
+           m-153 -29 c-22 -25 -43 -60 -47 -77 l-7 -32 -13 35 c-19 54 -18 58 44 89 31
+           17 59 30 60 31 2 0 -14 -21 -37 -46z m3 -83 c3 -4 -3 -16 -14 -26 -20 -18 -25
+           -11 -14 19 7 18 20 21 28 7z" />
+                            </g>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <img src="{% static 'repairshop/images/delivery-img.jpg' %}" alt="Відновлення рами">
+    </div>
+</section>
 {% endblock %}

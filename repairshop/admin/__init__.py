@@ -1,5 +1,6 @@
 from . import (
     contact_information,
+    content,
     customer,
     discount_global,
     discount_personal,

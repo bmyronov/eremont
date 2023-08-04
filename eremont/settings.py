@@ -68,8 +68,9 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
-                "repairshop.context_processor.contact_information",
-                "repairshop.context_processor.sub_categories",
+                "repairshop.context_processor.contact_information",  # context_processor.contact_information
+                "repairshop.context_processor.sub_categories",  # context_processor.sub_categories
+                "repairshop.context_processor.content",  # context_processor.content
             ],
         },
     },
@@ -138,51 +139,3 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-
-ADMIN_REORDER = (
-    "sites",
-    # Group 1: Замовлення
-    {
-        "app": "repairshop",
-        "label": "Замовлення",
-        "models": (
-            "repairshop.Order",
-            "repairshop.Customer",
-            "repairshop.Vehicle",
-            "repairshop.DiscountGlobal",
-            "repairshop.DiscountPersonal",
-            "repairshop.OrderStatus",
-            "repairshop.OrderStatusHistory",
-        ),
-    },
-    # Group 2: Website
-    {
-        "app": "repairshop",
-        "label": "Website",
-        "models": (
-            "repairshop.Service",
-            "repairshop.SubCategory",
-            "repairshop.ContactInformation",
-            "repairshop.HomeContent",
-        ),
-    },
-)
-
-ADMIN_ORDERING = (
-    (
-        "repairshop",
-        (
-            "repairshop.Order",
-            "repairshop.Customer",
-            "repairshop.Vehicle",
-            "repairshop.DiscountGlobal",
-            "repairshop.DiscountPersonal",
-            "repairshop.OrderStatus",
-            "repairshop.OrderStatusHistory",
-            "repairshop.Service",
-            "repairshop.SubCategory",
-            "repairshop.ContactInformation",
-            "repairshop.HomeContent",
-        ),
-    ),
-)

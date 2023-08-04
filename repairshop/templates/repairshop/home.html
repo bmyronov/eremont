@@ -7,22 +7,9 @@
     <section class="banner d-flex align-items-center">
         <div class="container d-flex justify-content-between align-items-center">
             <div>
-                <p class="text-light fw-bold h1">{{ content.banner_title|safe }}</p>
+                <p class="text-light fw-bold h1">{{ home_content.banner_title|safe }}</p>
             </div>
             <div class="banner-form rounded d-flex justify-content-center align-items-center">
-                <!-- <form id="form">
-                    <legend class="text-light text-center fw-bold mb-4 form-label">Заповніть форму</legend>
-                    <div class="mb-4">
-                        <input type="text" class="mt-2 form-input rounded" id="name" placeholder="Ваше ім'я" oninvalid="this.setCustomValidity('Введіть, буль ласка, своє ім\'я')" oninput="setCustomValidity('')" required>
-                    </div>
-                    <div class="mb-4">
-                        <input type="text" class="form-input rounded" id="phoneNumber" placeholder="Номер телефону" oninvalid="this.setCustomValidity('Введіть, буль ласка, свій номер телефону')" oninput="setCustomValidity('')" required>
-                    </div>
-                    <div class="mb-4">
-                        <input type="email" class="form-input rounded" id="email" placeholder="Email">
-                    </div>
-                    <button type="submit" class="btn btn-submit mt-3 fw-bold text-light">Замовити ремонт</button>
-                </form> -->
                 <form id="form" class="d-flex flex-column align-items-center" action="{% url 'home' %}" method="POST">
                     {% csrf_token %}
 
@@ -67,7 +54,7 @@
             <h3 class="fw-bold text-center mb-3">Чому ми?</h3>
             <div class="row text-center d-flex justify-content-between">
                 <div class="col-lg-3 d-flex justify-content-center">
-                    <a href="{{ content.card_one_link }}" class=" small-card rounded d-flex justify-content-evenly align-items-center mt-4">
+                    <a href="{{ home_content.card_one_link }}" class=" small-card rounded d-flex justify-content-evenly align-items-center mt-4">
                         <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="120px" height="120px" viewBox="0 0 120.000000 120.000000" preserveAspectRatio="xMidYMid meet">
 
                             <g transform="translate(0.000000,120.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
@@ -122,13 +109,13 @@ c8 -5 19 -5 25 0 13 11 55 2 55 -11 0 -5 11 -14 25 -19 14 -5 30 -21 35 -35 5
                             </g>
                         </svg>
                         <div class="d-flex flex-column">
-                            <p class="card-title">{{ content.card_one_title }}</p>
-                            <p class="card-description">{{ content.card_one_description }}</p>
+                            <p class="card-title">{{ home_content.card_one_title }}</p>
+                            <p class="card-description">{{ home_content.card_one_description }}</p>
                         </div>
                     </a>
                 </div>
                 <div class="col-lg-3 d-flex justify-content-center">
-                    <a href="{{ content.card_two_link }}" class="small-card rounded d-flex justify-content-evenly align-items-center mt-4">
+                    <a href="{{ home_content.card_two_link }}" class="small-card rounded d-flex justify-content-evenly align-items-center mt-4">
                         <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="120px" height="120px" viewBox="0 0 120.000000 120.000000" preserveAspectRatio="xMidYMid meet">
 
                             <g transform="translate(0.000000,120.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
@@ -163,13 +150,13 @@ c8 -5 19 -5 25 0 13 11 55 2 55 -11 0 -5 11 -14 25 -19 14 -5 30 -21 35 -35 5
                             </g>
                         </svg>
                         <div class="d-flex flex-column">
-                            <p class="card-title">{{ content.card_two_title }}</p>
-                            <p class="card-description">{{ content.card_two_description }}</p>
+                            <p class="card-title">{{ home_content.card_two_title }}</p>
+                            <p class="card-description">{{ home_content.card_two_description }}</p>
                         </div>
                     </a>
                 </div>
                 <div class="col-lg-3 d-flex justify-content-center">
-                    <a href="{{ content.card_three_link }}" class="small-card rounded d-flex justify-content-evenly align-items-center mt-4">
+                    <a href="{{ home_content.card_three_link }}" class="small-card rounded d-flex justify-content-evenly align-items-center mt-4">
                         <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="120px" height="120px" viewBox="0 0 120.000000 120.000000" preserveAspectRatio="xMidYMid meet">
 
                             <g transform="translate(0.000000,120.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
@@ -218,8 +205,8 @@ c36 -30 49 -81 31 -125 -18 -42 -47 -59 -103 -59 -40 0 -53 5 -78 29 -43 43
                             </g>
                         </svg>
                         <div class="d-flex flex-column">
-                            <p class="card-title">{{ content.card_three_title }}</p>
-                            <p class="card-description">{{ content.card_three_description }}</p>
+                            <p class="card-title">{{ home_content.card_three_title }}</p>
+                            <p class="card-description">{{ home_content.card_three_description }}</p>
                         </div>
                     </a>
                 </div>
@@ -257,6 +244,7 @@ c36 -30 49 -81 31 -125 -18 -42 -47 -59 -103 -59 -40 0 -53 5 -78 29 -43 43
             <img src="{% static 'repairshop/images/delivery-img.jpg' %}" alt="Відновлення рами">
         </div>
     </section>
+
     <section class="mt-5">
         <div class="container">
             <h3 class="fw-bold text-center mb-3">Послуги</h3>
@@ -273,34 +261,6 @@ c36 -30 49 -81 31 -125 -18 -42 -47 -59 -103 -59 -40 0 -53 5 -78 29 -43 43
                         </div>
                     {% endif %}
                 {% endfor %}
-
-                <!-- <div class="col-lg-3 d-flex justify-content-center">
-                    <a href="#" class="service-card rounded d-flex justify-content-evenly align-items-end mt-4">
-                        <div class="d-flex flex-column">
-                            <p class="service-title">Ремонт
-                                <br> елктросамокатів
-                            </p>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-3 d-flex justify-content-center">
-                    <a href="#" class="service-card rounded d-flex justify-content-evenly align-items-end mt-4">
-                        <div class="d-flex flex-column">
-                            <p class="service-title">Ремонт
-                                <br> електровелосипедів
-                            </p>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-3 d-flex justify-content-center">
-                    <a href="#" class="service-card rounded d-flex justify-content-evenly align-items-end mt-4">
-                        <div class="d-flex flex-column">
-                            <p class="service-title">Ремонт
-                                <br> велосипедів
-                            </p>
-                        </div>
-                    </a>
-                </div> -->
             </div>
         </div>
     </section>

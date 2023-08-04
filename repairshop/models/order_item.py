@@ -19,6 +19,7 @@ class OrderItem(models.Model):
         Service, on_delete=models.CASCADE, verbose_name="Послуга"
     )
 
+    # Calculates the price with discounts
     def set_price(self) -> None:
         discount_global = DiscountGlobal.objects.filter(active=True).first()
         discount_for_service = DiscountPersonal.objects.filter(
