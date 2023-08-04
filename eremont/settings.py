@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "django.contrib.postgres",  # PostgreSQL integration module
     "phonenumber_field",  # Phone numbers validator to store them in the db
+    "debug_toolbar",  # django debug toolbar
+    "ckeditor",  # ckeditor for text fields
     "repairshop",
 ]
 
@@ -53,6 +55,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "debug_toolbar.middleware.DebugToolbarMiddleware",  # django debug toolbar
 ]
 
 ROOT_URLCONF = "eremont.urls"
@@ -71,6 +74,7 @@ TEMPLATES = [
                 "repairshop.context_processor.contact_information",  # context_processor.contact_information
                 "repairshop.context_processor.sub_categories",  # context_processor.sub_categories
                 "repairshop.context_processor.content",  # context_processor.content
+                "repairshop.context_processor.discount",  # context_processor.content
             ],
         },
     },
@@ -139,3 +143,10 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+
+INTERNAL_IPS = [
+    # ...
+    "127.0.0.1",
+    # ...
+]

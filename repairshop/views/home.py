@@ -5,6 +5,7 @@ from django.shortcuts import redirect, render
 from repairshop.forms import CustomerForm
 from repairshop.models import (
     Customer,
+    DiscountGlobal,
     HomeContent,
     Order,
     OrderStatus,
@@ -36,7 +37,7 @@ def home(request: HttpRequest) -> HttpResponse:
     else:
         form = CustomerForm()
 
-    home_content = HomeContent.objects.get(pk=1)
+    home_content = HomeContent.objects.first()
     context = {
         "title": home_content.title,
         "home_content": home_content,

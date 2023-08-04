@@ -1,6 +1,6 @@
 from django.http import HttpRequest
 
-from repairshop.models import ContactInformation, Content, SubCategory
+from repairshop.models import ContactInformation, Content, DiscountGlobal, SubCategory
 
 
 # Header and Footer content
@@ -16,3 +16,8 @@ def sub_categories(request: HttpRequest) -> dict:
 # Content on all the pages
 def content(request: HttpRequest) -> dict:
     return {"content": Content.objects.first()}
+
+
+# DiscountGlobal
+def discount(request: HttpRequest) -> dict:
+    return {"discount": DiscountGlobal.objects.filter(active=True).first()}

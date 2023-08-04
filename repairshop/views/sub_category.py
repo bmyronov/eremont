@@ -8,12 +8,10 @@ from repairshop.models import DiscountGlobal, Service, SubCategory
 def sub_category(request: HttpRequest, sub_category: str) -> HttpResponse:
     sub_category = SubCategory.objects.filter(url=sub_category).first()
     services = Service.objects.filter(sub_category=sub_category).all()
-    discount = DiscountGlobal.objects.filter(active=True).first()
 
     context = {
         "title": sub_category.name,
         "sub_category": sub_category,
         "services": services,
-        "discount": discount,
     }
     return render(request, "repairshop/sub_category.html", context=context)

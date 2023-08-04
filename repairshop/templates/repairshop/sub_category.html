@@ -16,6 +16,9 @@
     <h1 class="sub-title text-center mb-4">{{ sub_category.name }}</h1>
     <div>
         <p class="sub-remark">* Ціни вказані без урахування витрат на комплектуючі.</p>
+        {% if discount %}
+            <p class="sub-remark">** До {{ discount.final_date|date:"d E" }} діє знижка <span class="badge text-bg-danger fst-italic">{{ discount.percentage }}%</span></p>
+        {% endif %}
     </div>
     <table class="table table-hover table-bordered">
         <thead>
@@ -46,7 +49,7 @@
             <p class="text-light delivery-title">{{ content.delivery_title|safe }}</p>
             <p class="text-light delivery-description mt-3">{{ content.delivery_description }}<p>
             <div class="d-flex">
-                <button type="submit" class="btn btn-delivery mt-3 fw-bold text-light" onclick="window.location.href='#form'">Залишити заявку</button>
+                <button type="submit" class="btn btn-delivery mt-3 fw-bold text-light" onclick="window.location.href='/'">Залишити заявку</button>
                 <div class="delivery-tg rounded mt-3 text-center d-flex align-items-center justify-content-center">
                     <a href="#">
                         <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="40" height="40px" viewBox="0 0 40 40" preserveAspectRatio="xMidYMid meet">

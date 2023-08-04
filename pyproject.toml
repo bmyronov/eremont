@@ -12,6 +12,8 @@ python-dotenv = "^1.0.0"
 psycopg2-binary = "^2.9.6"
 django-phonenumber-field = {extras = ["phonenumbers"], version = "^7.1.0"}
 pillow = "^10.0.0"
+django-debug-toolbar = "^4.1.0"
+django-ckeditor = "^6.7.0"
 
 [tool.poetry.group.dev.dependencies]
 ruff = "^0.0.270"
