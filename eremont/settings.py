@@ -23,12 +23,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-x)jk90&nn@u0**n6i(%3sh!md150=i+aswtcsi3yxy8o)2exw("
+SECRET_KEY = config.DJANGO_SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["localhost", "127.0.0.1", "0.0.0.0"]
 
 
 # Application definition
@@ -56,6 +56,9 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "debug_toolbar.middleware.DebugToolbarMiddleware",  # django debug toolbar
+    "django.middleware.cache.UpdateCacheMiddleware",  # Redis cache middlewares
+    "django.middleware.common.CommonMiddleware",  # Redis cache middlewares
+    "django.middleware.cache.FetchFromCacheMiddleware",  # Redis cache middlewares
 ]
 
 ROOT_URLCONF = "eremont.urls"
@@ -96,6 +99,17 @@ DATABASES = {
         "PORT": config.DB_PORT,  # PostgreSQL port (check docker-compose.yml)
     }
 }
+
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.redis.RedisCache",
+        "LOCATION": "redis://127.0.0.1:6379",
+    }
+}
+
+CACHE_MIDDLEWARE_ALIAS = "default"  # The cache alias to use for storage and 'default' is **local-memory cache**.
+CACHE_MIDDLEWARE_SECONDS = 300  # Number of seconds before each page is cached
+CACHE_MIDDLEWARE_KEY_PREFIX = ""  # Used if the cache is shared across multiple sites that use the same Django instance
 
 
 # Password validation
