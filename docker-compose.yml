@@ -35,7 +35,9 @@ services:
       - 6379:6379
 
   nginx:
-    image: nginx:latest
+    build:
+      dockerfile: ./Dockerfile
+      context: ./docker/nginx/
     container_name: nginx
     depends_on:
       - web

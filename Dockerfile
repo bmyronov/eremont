@@ -16,8 +16,8 @@ WORKDIR /web
 COPY . .
 
 # create static and media directories
-RUN mkdir /web/static
-# RUN mkdir /web/media # if not created
+RUN mkdir /web/static && \
+    mkdir /web/media
 
 # update pip 
 RUN pip install --upgrade pip
