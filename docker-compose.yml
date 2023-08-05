@@ -2,9 +2,9 @@ services:
   web:
     build: .
     container_name: eremont
+    restart: unless-stopped
     depends_on:
       - db
-      - redis
     volumes:
       - static_volume:/web/static
       - media_volume:/web/media
@@ -16,7 +16,7 @@ services:
   db:
     image: postgres:latest
     container_name: postgres
-    restart: unless-stopped
+    restart: always
     volumes: 
       - ./pg/data:/var/lib/postgresql/data
       - ./pg/sql/create_tables.sql:/docker-entrypoint-initdb.d/create_tables.sql
@@ -35,10 +35,9 @@ services:
       - 6379:6379
 
   nginx:
-    build:
-      dockerfile: ./Dockerfile
-      context: ./docker/nginx/
+    build: ./docker/nginx
     container_name: nginx
+    restart: always
     depends_on:
       - web
     ports:
