@@ -136,7 +136,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = "uk"
 
-TIME_ZONE = "Europe/Kiev"
+TIME_ZONE = config.TZ
 
 USE_I18N = True
 

@@ -98,3 +98,6 @@ containers/
 
 # Migrations (I will add the manually when the project is ready)
 migrations/
+
+# Media
+media/
