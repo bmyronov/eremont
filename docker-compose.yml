@@ -35,11 +35,14 @@ services:
       - 6379:6379
 
   nginx:
-    build: ./docker/nginx
+    build: ./nginx
     container_name: nginx
-    restart: always
+    restart: unless-stopped
     depends_on:
       - web
+    volumes:
+      - static_volume:/web/static
+      - media_volume:/web/media
     ports:
       - "${NGINX_EXTERNAL_PORT}:80"
 
