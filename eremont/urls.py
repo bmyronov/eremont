@@ -26,6 +26,9 @@ urlpatterns = [
     path("", include("repairshop.urls")),
 ]
 
+handler404 = "repairshop.views.handler404"
+handler500 = "repairshop.views.handler500"
+
 if settings.DEBUG:
     import debug_toolbar
 
