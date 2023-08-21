@@ -30,6 +30,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["localhost", "127.0.0.1", "0.0.0.0", "e-remont.vn.ua"]
 CSRF_TRUSTED_ORIGINS = ["https://*.e-remont.vn.ua"]
+SESSION_COOKIE_AGE = 3600  # session timeout for admin page (1 hour)
 
 # Application definition
 
