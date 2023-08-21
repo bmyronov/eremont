@@ -6,7 +6,7 @@
 - [ ] Add customer page
 - [ ] Create tg bot to inform when a new order is created
 - [ ] Add functionality to tg bot to manage orders, customers and vehicles
-- [ ] Add 404 page and 500 page
+- [x] Add 404 page and 500 page
 - [ ] Add logger
 
 ## Improvements
