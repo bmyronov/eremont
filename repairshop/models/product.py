@@ -1,8 +1,10 @@
+from typing import Any
+
 from ckeditor.fields import RichTextField
 from django.db import models
 
 
-def photo_path(instance, filename):
+def photo_path(instance: models.Model, filename: str):
     return "images/products/{0}/{1}".format(instance.product_code, filename)
 
 
