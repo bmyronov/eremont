@@ -10,6 +10,7 @@ from . import (
     order,
     order_status,
     order_status_history,
+    products,
     service,
     sub_category,
     vehicle,

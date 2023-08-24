@@ -1,0 +1,22 @@
+{% extends "repairshop/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <!-- Breadcrumb nav menu -->
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb mt-3">
+        <li class="breadcrumb-item"><a href="{% url 'home' %}">Головна</a></li>
+        <li class="breadcrumb-item">Товари від e-remont</li>
+        <li class="breadcrumb-item active">{{ name }}</li>
+        </ol>
+    </nav>
+
+    <h1 class="sub-title text-center mb-4">{{ name }}</h1>
+    <p class="text-center">{{ description|safe }}</p>
+</div>
+
+<section class="map">
+    {{ content.location|safe }}
+</section>
+{% endblock %}

@@ -8,7 +8,7 @@ from .sub_category import SubCategory
 class Service(models.Model):
     name = models.CharField(max_length=300, verbose_name="Назва")
     price = models.PositiveIntegerField(verbose_name="Ціна")
-    position = models.PositiveIntegerField(default=0)
+    position = models.PositiveIntegerField(default=0, verbose_name="Позиція в таблиці")
     sub_category = models.ManyToManyField(SubCategory, verbose_name="Підкатегорії")
 
     def __str__(self):
